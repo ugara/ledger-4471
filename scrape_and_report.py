@@ -355,10 +355,12 @@ def main():
         log("Lettura pick crypto...")
         crypto_rows = scrape_picks(page, f"{BASE_URL}/tools/assets-picks")
         log(f"  {len(crypto_rows)} righe trovate")
+        log(f"  Esempio: {crypto_rows[:2] if crypto_rows else 'vuoto'}")
 
         log("Lettura pick stock...")
         stock_rows = scrape_picks(page, f"{BASE_URL}/tools/stock-picks")
         log(f"  {len(stock_rows)} righe trovate")
+        log(f"  Esempio: {stock_rows[:2] if stock_rows else 'vuoto'}")
 
         log("Lettura feed per notizie recenti...")
         headlines = scrape_daily_feed_headlines(page)
