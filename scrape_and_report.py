@@ -74,7 +74,20 @@ def scrape_picks(page, url):
     """Estrae le righe della tabella pick (crypto o stock) leggendo il testo
     visibile — robusto a piccoli cambi di stile, fragile a cambi di struttura."""
     page.goto(url, wait_until="networkidle")
-    page.wait_for_timeout(1500)
+
+    try:
+        page.wait_for_function(
+            """() => {
+                const rows = document.querySelectorAll('table tbody tr');
+                if (rows.length === 0) return false;
+                return Array.from(rows).some(r => r.innerText.trim().length > 5);
+            }""",
+            timeout=20000,
+        )
+    except Exception:
+        pass  # procediamo comunque: meglio dati parziali che bloccare tutto
+
+    page.wait_for_timeout(2000)
 
     rows = page.evaluate(
         """
@@ -83,7 +96,7 @@ def scrape_picks(page, url):
             return rows.map(row => {
                 const cells = Array.from(row.querySelectorAll('td'));
                 return cells.map(c => c.innerText.trim());
-            }).filter(r => r.length > 0);
+            }).filter(r => r.length > 0 && r.some(cell => cell.length > 0));
         }
         """
     )
