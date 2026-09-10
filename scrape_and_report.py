@@ -53,7 +53,15 @@ def inject_session(page, refresh_token):
         [AUTH_STORAGE_KEY, fake_session],
     )
     page.reload(wait_until="networkidle")
-
+    log(f"DEBUG dopo login — titolo pagina: {page.title()!r}, url: {page.url}")
+    token_state = page.evaluate(
+        "(key) => { const raw = localStorage.getItem(key); if(!raw) return 'ASSENTE'; "
+        "try { const d = JSON.parse(raw); return {has_access_token: !!d.access_token, "
+        "access_token_len: (d.access_token||'').length, expires_at: d.expires_at}; } "
+        "catch(e){ return 'JSON_INVALIDO'; } }",
+        AUTH_STORAGE_KEY,
+    )
+    log(f"DEBUG stato token dopo refresh: {token_state}")
 
 def extract_rotated_refresh_token(page):
     """Dopo il refresh automatico, Supabase potrebbe aver ruotato il token:
