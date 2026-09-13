@@ -242,7 +242,7 @@
       <div class="brand-mark">C</div>
       <div class="brand-name">Cryptonary Ledger</div>
     </div>
-    <div class="updated-note">Ultimo aggiornamento <span class="num" id="lastUpdated"><!-- LAST_UPDATED -->—</span></div>
+    <div class="updated-note">Ultimo aggiornamento <span class="num" id="lastUpdated"><!-- LAST_UPDATED -->13/09/2026 23:40 UTC</span></div>
   </div>
   <nav class="tabs" id="tabNav">
     <button class="tab-btn active" data-panel="dashboard">Dashboard</button>
@@ -311,10 +311,8 @@
       <div class="section-note">Un parere per ogni tua posizione reale: se avrebbe senso vendere, aumentare, o restare fermi — con il ragionamento dietro.</div>
       <div id="adviceContainer">
         <!-- DASHBOARD_ADVICE_START -->
-        <div class="advice-card">
-          <div class="advice-body"><p>Aggiungi almeno una posizione per ricevere un parere personalizzato.</p></div>
-        </div>
-        <!-- DASHBOARD_ADVICE_END -->
+<div class="advice-card"><div class="advice-body"><p>Aggiungi almeno una posizione per ricevere un parere personalizzato.</p></div></div>
+<!-- DASHBOARD_ADVICE_END -->
       </div>
     </section>
 
@@ -367,11 +365,7 @@
 
 <script>
 // ================== DATI (iniettati dal backend ad ogni run) ==================
-const PICKS_DATA = /* __PICKS_DATA__ */ [
-  {name:"Bitcoin", ticker:"BTC", price:76854.53, chg:1.2},
-  {name:"Ethereum", ticker:"ETH", price:2445.97, chg:-0.6},
-  {name:"Solana", ticker:"SOL", price:99.33, chg:2.1},
-] /* __PICKS_DATA_END__ */;
+const PICKS_DATA = /* __PICKS_DATA__ */ [{"name": "Zcash", "ticker": "ZEC", "price": 1062.23, "chg": 0}, {"name": "Pump.fun", "ticker": "PUMP", "price": 0.00353, "chg": 0}, {"name": "Monero", "ticker": "XMR", "price": 517.87, "chg": 0}, {"name": "Aura", "ticker": "AURA", "price": 0.015162, "chg": 0}, {"name": "Hyperliquid", "ticker": "HYPE", "price": 77.47, "chg": 0}, {"name": "Ethereum", "ticker": "ETH", "price": 2477.63, "chg": 0}, {"name": "Solana", "ticker": "SOL", "price": 99.6, "chg": 0}, {"name": "Bitcoin", "ticker": "BTC", "price": 76796.88, "chg": 0}, {"name": "Micron Technology", "ticker": "MU", "price": 0, "chg": 0}, {"name": "Sandisk Corporation", "ticker": "SNDK", "price": 0, "chg": 0}, {"name": "Vistra Corp", "ticker": "VST", "price": 0, "chg": 0}] /* __PICKS_DATA_END__ */;
 
 const ACTIVE = /* __SEED_ACTIVE__ */ [] /* __SEED_ACTIVE_END__ */;
 const CLOSED = /* __SEED_CLOSED__ */ [] /* __SEED_CLOSED_END__ */;
