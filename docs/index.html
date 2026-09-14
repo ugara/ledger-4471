@@ -161,9 +161,12 @@
   .legend-pct{ font-family:var(--mono); color:var(--muted); }
 
   .tag{ display:inline-block; padding:4px 10px; border-radius:20px; font-size:0.72rem; font-weight:600; }
-  .tag.buy{ background:var(--pos-bg); color:var(--pos); }
-  .tag.sell{ background:var(--neg-bg); color:var(--neg); }
-  .tag.hold{ background:var(--accent-bg); color:var(--accent); }
+  .tag.buy{ background:var(--pos); color:#fff; font-weight:700; }
+  .tag.sell{ background:var(--neg); color:#fff; font-weight:700; }
+  .tag.hold{ background:var(--accent); color:#fff; font-weight:700; }
+  .tag.bull{ background:var(--pos); color:#fff; font-weight:700; }
+  .tag.bear{ background:var(--neg); color:#fff; font-weight:700; }
+  .tag.neutral{ background:#5B6472; color:#fff; font-weight:700; }
 
   .advice-card{
     background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin-bottom:12px;
@@ -249,7 +252,7 @@
       <div class="brand-mark">C</div>
       <div class="brand-name">Cryptonary Ledger</div>
     </div>
-    <div class="updated-note">Ultimo aggiornamento <span class="num" id="lastUpdated"><!-- LAST_UPDATED -->14/09/2026 22:29 UTC</span></div>
+    <div class="updated-note">Ultimo aggiornamento <span class="num" id="lastUpdated"><!-- LAST_UPDATED -->14/09/2026 22:35 UTC</span></div>
   </div>
   <nav class="tabs" id="tabNav">
     <button class="tab-btn active" data-panel="dashboard">Dashboard</button>
@@ -405,7 +408,7 @@
 
 <script>
 // ================== DATI (iniettati dal backend ad ogni run) ==================
-const PICKS_DATA = /* __PICKS_DATA__ */ [{"name": "Zcash", "ticker": "ZEC", "price": 1175.06, "chg": 2.24}, {"name": "Pump.fun", "ticker": "PUMP", "price": 0.003675, "chg": -17.74}, {"name": "Monero", "ticker": "XMR", "price": 512.88, "chg": 0.65}, {"name": "Aura", "ticker": "AURA", "price": 0.016791, "chg": -18.09}, {"name": "Hyperliquid", "ticker": "HYPE", "price": 80.27, "chg": -6.69}, {"name": "Ethereum", "ticker": "ETH", "price": 2542.8, "chg": 1.05}, {"name": "Solana", "ticker": "SOL", "price": 103.06, "chg": -1.29}, {"name": "Bitcoin", "ticker": "BTC", "price": 78565.37, "chg": -2.39}, {"name": "Micron Technology", "ticker": "MU", "price": 977.41, "chg": -5.25}, {"name": "Sandisk Corporation", "ticker": "SNDK", "price": 1524.99, "chg": -4.98}, {"name": "Vistra Corp", "ticker": "VST", "price": 151.72, "chg": -5.16}] /* __PICKS_DATA_END__ */;
+const PICKS_DATA = /* __PICKS_DATA__ */ [{"name": "Zcash", "ticker": "ZEC", "price": 1173.78, "chg": 2.24}, {"name": "Pump.fun", "ticker": "PUMP", "price": 0.003677, "chg": -17.74}, {"name": "Monero", "ticker": "XMR", "price": 513.74, "chg": 0.65}, {"name": "Aura", "ticker": "AURA", "price": 0.016787, "chg": -18.09}, {"name": "Hyperliquid", "ticker": "HYPE", "price": 80.2, "chg": -6.69}, {"name": "Ethereum", "ticker": "ETH", "price": 2540.06, "chg": 1.05}, {"name": "Solana", "ticker": "SOL", "price": 103.05, "chg": -1.29}, {"name": "Bitcoin", "ticker": "BTC", "price": 78538.0, "chg": -2.39}, {"name": "Micron Technology", "ticker": "MU", "price": 977.41, "chg": -5.25}, {"name": "Sandisk Corporation", "ticker": "SNDK", "price": 1524.99, "chg": -4.98}, {"name": "Vistra Corp", "ticker": "VST", "price": 151.72, "chg": -5.16}] /* __PICKS_DATA_END__ */;
 
 const ACTIVE = /* __SEED_ACTIVE__ */ [] /* __SEED_ACTIVE_END__ */;
 const CLOSED = /* __SEED_CLOSED__ */ [] /* __SEED_CLOSED_END__ */;
