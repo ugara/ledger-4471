@@ -41,4 +41,11 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add docs/index.html
           git diff --quiet && git diff --staged --quiet || git commit -m "Aggiornamento automatico $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Push riuscito al tentativo $i."
+              break
+            fi
+            echo "Push fallito al tentativo $i, riprovo tra 5 secondi..."
+            sleep 5
+          done
