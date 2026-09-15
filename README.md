@@ -79,9 +79,13 @@ con un commento di conferma al prossimo run.
 ## Frequenza e modalità
 
 - **Ogni 6 ore** (01:00, 07:00, 13:00, 19:00 UTC): aggiornamento prezzi/portafoglio/avvisi
-- **13:00 UTC** (15:00 ora italiana estiva): anche l'analisi tecnica approfondita completa
-  (indicatori, divergenze RSI, macro, multi-timeframe) — una sola volta al giorno per
-  contenere il consumo di token dell'API
+  — economico, nessuna ricerca web
+- **Analisi tecnica approfondita** (indicatori, divergenze RSI, macro, multi-timeframe,
+  ricerca web): **non scatta più da sola**. Si attiva solo cliccando il pulsante
+  "🔍 Richiedi analisi approfondita" nella scheda "Grafici e Analisi" — apre una
+  GitHub Issue che lo script elabora al controllo rapido successivo (entro 6 ore),
+  o subito se lanci "Run workflow" a mano. Così hai il controllo diretto su quando
+  spendere in ricerca web, invece di un consumo automatico ricorrente.
 
 ## Cosa manca ancora (prossimi passi)
 
