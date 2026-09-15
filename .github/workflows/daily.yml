@@ -1,0 +1,53 @@
+name: Cryptonary Report
+
+on:
+  schedule:
+    # 01:00, 07:00, 13:00, 19:00 UTC — quella delle 13:00 fa anche l'analisi
+    # approfondita (con ricerca web), una sola volta al giorno per contenere i costi
+    - cron: "0 1,7,13,19 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Run report script
+        env:
+          CRYPTONARY_EMAIL: ${{ secrets.CRYPTONARY_EMAIL }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          GH_REPO: ${{ github.repository }}
+        run: python scrape_and_report.py
+
+      - name: Commit updated dashboard
+        run: |
+          git config user.name "cryptonary-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/index.html
+          git diff --quiet && git diff --staged --quiet || git commit -m "Aggiornamento automatico $(date -u +'%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "Push riuscito al tentativo $i."
+              break
+            fi
+            echo "Push fallito al tentativo $i, riprovo tra 5 secondi..."
+            sleep 5
+          done
